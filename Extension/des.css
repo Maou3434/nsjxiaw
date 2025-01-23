@@ -32,13 +32,6 @@ input[type="date"] {
     transition: border-color 0.3s ease;
 }
 
-.centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust based on your layout */
-}
-
 input[type="date"]:focus {
     outline: none;
     border-color: #3498db;
