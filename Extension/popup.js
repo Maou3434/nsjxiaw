@@ -12,9 +12,12 @@ document.getElementById('extract').addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
-            files: ['content.js'], // Inject content.js
-        }, () => {
-            // Now that content.js is injected, send the start and end date as a message
+            files: ['content.js']
+        }, (results) => {
+            if (chrome.runtime.lastError) {
+                console.error('Script injection failed:', chrome.runtime.lastError);
+                return;
+            }
             chrome.tabs.sendMessage(tabs[0].id, { startDate, endDate, startTime, endTime });
         });
     });
@@ -29,4 +32,11 @@ chrome.runtime.onMessage.addListener((message) => {
     if (message.summary) {
         document.getElementById('summary').textContent = message.summary;
     }
+});
+
+// Add cleanup when popup closes
+window.addEventListener('unload', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, { type: 'cleanup' });
+    });
 });

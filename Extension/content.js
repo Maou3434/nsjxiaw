@@ -1,8 +1,16 @@
 let messages = new Set();
-
 let shouldContinue = true;
+let messageCount = 0;
+let lastScrollHeight = 0;
+let lastOldestMessageDate = null;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    // Handle cleanup message
+    if (request.type === 'cleanup') {
+        shouldContinue = false;
+        return true;
+    }
+
     const [startHours, startMinutes] = request.startTime.split(':');
     const [endHours, endMinutes] = request.endTime.split(':');
     
@@ -12,10 +20,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     startDate.setHours(parseInt(startHours), parseInt(startMinutes), 0, 0);
     endDate.setHours(parseInt(endHours), parseInt(endMinutes), 59, 999);
 
-    let messageCount = 0;
     const scrollInterval = 2000;  // Time interval between scroll attempts
-    let lastScrollHeight = 0;     // To detect if more messages have loaded
-    let lastOldestMessageDate = null;  // Track the oldest message date from the previous scroll
+
+    // Reset state
+    messages.clear();
+    messageCount = 0;
+    lastScrollHeight = 0;
+    lastOldestMessageDate = null;
+    shouldContinue = true;
 
     const scrollUpAndExtract = () => {
         if (!shouldContinue) return;
@@ -78,9 +90,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     };
 
     scrollUpAndExtract();  // Start the scrolling and extraction process
-});
 
-// Listen for the onSuspend event to stop the script
-chrome.runtime.onSuspend.addListener(() => {
-    shouldContinue = false;
+    // Return true to indicate async response
+    return true;
 });
