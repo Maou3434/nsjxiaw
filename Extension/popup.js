@@ -19,6 +19,12 @@ document.getElementById('extract').addEventListener('click', () => {
 });
 
 chrome.runtime.onMessage.addListener((message) => {
-    document.getElementById('messageCount').textContent = message.count;
-    document.getElementById('result').innerHTML = message.messages.join('<br><br>');
+    if (message.count) {
+        document.getElementById('messageCount').textContent = message.count;
+        document.getElementById('result').innerHTML = message.messages.join('<br><br>');
+    }
+    
+    if (message.summary) {
+        document.getElementById('summary').textContent = message.summary;
+    }
 });

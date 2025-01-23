@@ -1,10 +1,11 @@
+let messages = new Set();
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const startDate = new Date(request.startDate);
     const endDate = new Date(request.endDate);
     endDate.setHours(23, 59, 59); // Ensure messages up to the end of the day are included
     startDate.setHours(0, 0, 0); // Ensure messages from the start of the day are included
-
-    let messages = new Set();
+    
     let messageCount = 0;
     const scrollInterval = 2000;  // Time interval between scroll attempts
     let lastScrollHeight = 0;     // To detect if more messages have loaded
