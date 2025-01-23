@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Message Extractor</title>
+</head>
+<body>
+  <h2>Select Date Range</h2>
+  <label for="start">Start Date:</label>
+  <input type="date" id="start">
+  <br>
+  <label for="end">End Date:</label>
+  <input type="date" id="end">
+  <br><br>
+  <button id="extract">Extract Messages</button>
+  <h3>Messages Extracted: <span id="messageCount">0</span></h3>
+  <div id="result"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
