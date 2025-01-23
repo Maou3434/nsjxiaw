@@ -1,3 +1,5 @@
+let messages = new Set();
+
 let shouldContinue = true;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -10,7 +12,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     startDate.setHours(parseInt(startHours), parseInt(startMinutes), 0, 0);
     endDate.setHours(parseInt(endHours), parseInt(endMinutes), 59, 999);
 
-    let messages = new Set();
     let messageCount = 0;
     const scrollInterval = 2000;  // Time interval between scroll attempts
     let lastScrollHeight = 0;     // To detect if more messages have loaded

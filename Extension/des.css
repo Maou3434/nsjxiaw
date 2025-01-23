@@ -1,0 +1,84 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f8;
+    max-width: 400px;
+    margin: 20 auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #34495e;
+    font-weight: 600;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    max-width: 300px;
+    border: 1.5px solid #bdc3c7;
+    border-radius: 6px;
+    background-color: white;
+    transition: border-color 0.3s ease;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust based on your layout */
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+#extract {
+    width: 100%;
+    padding: 12px;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+#extract:hover {
+    background-color: #25d366;
+}
+
+h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+#result {
+    background-color: white;
+    border: 1px solid #ecf0f1;
+    border-radius: 6px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#messageCount {
+    color: #3498db;
+    font-weight: bold;
+}
