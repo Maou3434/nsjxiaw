@@ -94,3 +94,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // Return true to indicate async response
     return true;
 });
+
+// Add this line inside the extractMessages function after the messages are extracted
+chrome.runtime.sendMessage({ type: 'extractedMessages', messages: Array.from(messages) });
