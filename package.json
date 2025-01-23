@@ -1,0 +1,20 @@
+{
+  "name": "whatsapp-message-extractor",
+  "version": "1.0.0",
+  "description": "A web extension to extract messages from WhatsApp Web.",
+  "main": "src/background.js",
+  "scripts": {
+    "build": "echo 'Build script not defined'",
+    "test": "echo 'Test script not defined'"
+  },
+  "keywords": [
+    "whatsapp",
+    "extension",
+    "message",
+    "extractor"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
